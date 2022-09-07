@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		86486F7F283CDE1B009DDF75 /* ZDPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F7C283CDE1B009DDF75 /* ZDPhotoCell.swift */; };
+		86486F80283CDE1B009DDF75 /* ZDAlbumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F7D283CDE1B009DDF75 /* ZDAlbumListCell.swift */; };
+		86486F81283CDE1B009DDF75 /* ZDAlbumListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86486F7E283CDE1B009DDF75 /* ZDAlbumListCell.xib */; };
+		86486F87283CDE41009DDF75 /* ZDMPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F82283CDE41009DDF75 /* ZDMPExtensions.swift */; };
+		86486F88283CDE41009DDF75 /* ZDMPStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F83283CDE41009DDF75 /* ZDMPStrings.swift */; };
+		86486F89283CDE41009DDF75 /* ZDMPAssetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F84283CDE41009DDF75 /* ZDMPAssetExtension.swift */; };
+		86486F8A283CDE41009DDF75 /* ZDMPGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F85283CDE41009DDF75 /* ZDMPGesture.swift */; };
+		86486F8B283CDE41009DDF75 /* ZDMPUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F86283CDE41009DDF75 /* ZDMPUtility.swift */; };
+		86486F8F283CDE59009DDF75 /* ZDMPPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F8C283CDE59009DDF75 /* ZDMPPhotosViewController.swift */; };
+		86486F90283CDE59009DDF75 /* ZDMPAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F8D283CDE59009DDF75 /* ZDMPAlbumsViewController.swift */; };
+		86486F91283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F8E283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift */; };
+		8652D3E1283F878700E45F4C /* ZDMPFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8652D3E0283F878700E45F4C /* ZDMPFlowLayout.swift */; };
+		86E4FAA028169AB80027AC6F /* ZDMediaPicker.docc in Sources */ = {isa = PBXBuildFile; fileRef = 86E4FA9F28169AB80027AC6F /* ZDMediaPicker.docc */; };
+		86E4FAA628169AB90027AC6F /* ZDMediaPickerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E4FA9B28169AB80027AC6F /* ZDMediaPickerSDK.framework */; };
+		86E4FAAB28169AB90027AC6F /* ZDMediaPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4FAAA28169AB90027AC6F /* ZDMediaPickerTests.swift */; };
+		86E4FAAC28169AB90027AC6F /* ZDMediaPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E4FA9E28169AB80027AC6F /* ZDMediaPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86E4FACD28169B870027AC6F /* ZDMediaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4FABA28169B870027AC6F /* ZDMediaPicker.swift */; };
+		86E4FACE28169B870027AC6F /* ZDMediaPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4FABB28169B870027AC6F /* ZDMediaPickerExtension.swift */; };
+		86E4FACF28169B870027AC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E4FABC28169B870027AC6F /* Assets.xcassets */; };
+		86E4FAD628169B870027AC6F /* ZDCameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4FAC428169B870027AC6F /* ZDCameraPicker.swift */; };
+		86E4FADA28169B870027AC6F /* ZDMediaPickerStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E4FAC928169B870027AC6F /* ZDMediaPickerStoryBoard.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86E4FAA728169AB90027AC6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86E4FA9228169AB80027AC6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86E4FA9A28169AB80027AC6F;
+			remoteInfo = ZDMediaPicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		86486F7C283CDE1B009DDF75 /* ZDPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDPhotoCell.swift; sourceTree = "<group>"; };
+		86486F7D283CDE1B009DDF75 /* ZDAlbumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAlbumListCell.swift; sourceTree = "<group>"; };
+		86486F7E283CDE1B009DDF75 /* ZDAlbumListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDAlbumListCell.xib; sourceTree = "<group>"; };
+		86486F82283CDE41009DDF75 /* ZDMPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPExtensions.swift; sourceTree = "<group>"; };
+		86486F83283CDE41009DDF75 /* ZDMPStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPStrings.swift; sourceTree = "<group>"; };
+		86486F84283CDE41009DDF75 /* ZDMPAssetExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPAssetExtension.swift; sourceTree = "<group>"; };
+		86486F85283CDE41009DDF75 /* ZDMPGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPGesture.swift; sourceTree = "<group>"; };
+		86486F86283CDE41009DDF75 /* ZDMPUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPUtility.swift; sourceTree = "<group>"; };
+		86486F8C283CDE59009DDF75 /* ZDMPPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPPhotosViewController.swift; sourceTree = "<group>"; };
+		86486F8D283CDE59009DDF75 /* ZDMPAlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPAlbumsViewController.swift; sourceTree = "<group>"; };
+		86486F8E283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPPhotosVCExtension.swift; sourceTree = "<group>"; };
+		8652D3E0283F878700E45F4C /* ZDMPFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMPFlowLayout.swift; sourceTree = "<group>"; };
+		86E4FA9B28169AB80027AC6F /* ZDMediaPickerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZDMediaPickerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86E4FA9E28169AB80027AC6F /* ZDMediaPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZDMediaPicker.h; sourceTree = "<group>"; };
+		86E4FA9F28169AB80027AC6F /* ZDMediaPicker.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ZDMediaPicker.docc; sourceTree = "<group>"; };
+		86E4FAA528169AB90027AC6F /* ZDMediaPickerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZDMediaPickerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86E4FAAA28169AB90027AC6F /* ZDMediaPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZDMediaPickerTests.swift; sourceTree = "<group>"; };
+		86E4FABA28169B870027AC6F /* ZDMediaPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMediaPicker.swift; sourceTree = "<group>"; };
+		86E4FABB28169B870027AC6F /* ZDMediaPickerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMediaPickerExtension.swift; sourceTree = "<group>"; };
+		86E4FABC28169B870027AC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		86E4FAC428169B870027AC6F /* ZDCameraPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDCameraPicker.swift; sourceTree = "<group>"; };
+		86E4FAC928169B870027AC6F /* ZDMediaPickerStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZDMediaPickerStoryBoard.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		86E4FA9828169AB80027AC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86E4FAA228169AB90027AC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86E4FAA628169AB90027AC6F /* ZDMediaPickerSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		86E4FA9128169AB80027AC6F = {
+			isa = PBXGroup;
+			children = (
+				86E4FA9D28169AB80027AC6F /* ZDMediaPicker */,
+				86E4FAB528169B870027AC6F /* ZDMediaPicker */,
+				86E4FAA928169AB90027AC6F /* ZDMediaPickerTests */,
+				86E4FA9C28169AB80027AC6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		86E4FA9C28169AB80027AC6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				86E4FA9B28169AB80027AC6F /* ZDMediaPickerSDK.framework */,
+				86E4FAA528169AB90027AC6F /* ZDMediaPickerSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		86E4FA9D28169AB80027AC6F /* ZDMediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				86E4FA9E28169AB80027AC6F /* ZDMediaPicker.h */,
+				86E4FA9F28169AB80027AC6F /* ZDMediaPicker.docc */,
+			);
+			path = ZDMediaPicker;
+			sourceTree = "<group>";
+		};
+		86E4FAA928169AB90027AC6F /* ZDMediaPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				86E4FAAA28169AB90027AC6F /* ZDMediaPickerTests.swift */,
+			);
+			path = ZDMediaPickerTests;
+			sourceTree = "<group>";
+		};
+		86E4FAB528169B870027AC6F /* ZDMediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				86E4FAB628169B870027AC6F /* Cells */,
+				86E4FABA28169B870027AC6F /* ZDMediaPicker.swift */,
+				86E4FABB28169B870027AC6F /* ZDMediaPickerExtension.swift */,
+				86E4FABC28169B870027AC6F /* Assets.xcassets */,
+				86E4FABD28169B870027AC6F /* Extensions */,
+				86E4FAC528169B870027AC6F /* ViewControllers */,
+				86E4FAC928169B870027AC6F /* ZDMediaPickerStoryBoard.storyboard */,
+			);
+			name = ZDMediaPicker;
+			path = ZDMediaPicker/ZDMediaPicker;
+			sourceTree = "<group>";
+		};
+		86E4FAB628169B870027AC6F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				86486F7D283CDE1B009DDF75 /* ZDAlbumListCell.swift */,
+				86486F7E283CDE1B009DDF75 /* ZDAlbumListCell.xib */,
+				86486F7C283CDE1B009DDF75 /* ZDPhotoCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		86E4FABD28169B870027AC6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8652D3E0283F878700E45F4C /* ZDMPFlowLayout.swift */,
+				86486F84283CDE41009DDF75 /* ZDMPAssetExtension.swift */,
+				86486F82283CDE41009DDF75 /* ZDMPExtensions.swift */,
+				86486F85283CDE41009DDF75 /* ZDMPGesture.swift */,
+				86486F83283CDE41009DDF75 /* ZDMPStrings.swift */,
+				86486F86283CDE41009DDF75 /* ZDMPUtility.swift */,
+				86E4FAC428169B870027AC6F /* ZDCameraPicker.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86E4FAC528169B870027AC6F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				86486F8D283CDE59009DDF75 /* ZDMPAlbumsViewController.swift */,
+				86486F8E283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift */,
+				86486F8C283CDE59009DDF75 /* ZDMPPhotosViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		86E4FA9628169AB80027AC6F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86E4FAAC28169AB90027AC6F /* ZDMediaPicker.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		86E4FA9A28169AB80027AC6F /* ZDMediaPickerSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86E4FAAF28169AB90027AC6F /* Build configuration list for PBXNativeTarget "ZDMediaPickerSDK" */;
+			buildPhases = (
+				86E4FA9628169AB80027AC6F /* Headers */,
+				86E4FA9728169AB80027AC6F /* Sources */,
+				86E4FA9828169AB80027AC6F /* Frameworks */,
+				86E4FA9928169AB80027AC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZDMediaPickerSDK;
+			productName = ZDMediaPicker;
+			productReference = 86E4FA9B28169AB80027AC6F /* ZDMediaPickerSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		86E4FAA428169AB90027AC6F /* ZDMediaPickerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86E4FAB228169AB90027AC6F /* Build configuration list for PBXNativeTarget "ZDMediaPickerSDKTests" */;
+			buildPhases = (
+				86E4FAA128169AB90027AC6F /* Sources */,
+				86E4FAA228169AB90027AC6F /* Frameworks */,
+				86E4FAA328169AB90027AC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86E4FAA828169AB90027AC6F /* PBXTargetDependency */,
+			);
+			name = ZDMediaPickerSDKTests;
+			productName = ZDMediaPickerTests;
+			productReference = 86E4FAA528169AB90027AC6F /* ZDMediaPickerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		86E4FA9228169AB80027AC6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					86E4FA9A28169AB80027AC6F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					86E4FAA428169AB90027AC6F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 86E4FA9528169AB80027AC6F /* Build configuration list for PBXProject "ZDMediaPickerSDK" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 86E4FA9128169AB80027AC6F;
+			productRefGroup = 86E4FA9C28169AB80027AC6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				86E4FA9A28169AB80027AC6F /* ZDMediaPickerSDK */,
+				86E4FAA428169AB90027AC6F /* ZDMediaPickerSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		86E4FA9928169AB80027AC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86E4FACF28169B870027AC6F /* Assets.xcassets in Resources */,
+				86E4FADA28169B870027AC6F /* ZDMediaPickerStoryBoard.storyboard in Resources */,
+				86486F81283CDE1B009DDF75 /* ZDAlbumListCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86E4FAA328169AB90027AC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		86E4FA9728169AB80027AC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86486F8B283CDE41009DDF75 /* ZDMPUtility.swift in Sources */,
+				86486F88283CDE41009DDF75 /* ZDMPStrings.swift in Sources */,
+				86486F89283CDE41009DDF75 /* ZDMPAssetExtension.swift in Sources */,
+				86486F7F283CDE1B009DDF75 /* ZDPhotoCell.swift in Sources */,
+				86486F8A283CDE41009DDF75 /* ZDMPGesture.swift in Sources */,
+				86486F90283CDE59009DDF75 /* ZDMPAlbumsViewController.swift in Sources */,
+				86E4FAA028169AB80027AC6F /* ZDMediaPicker.docc in Sources */,
+				86486F91283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift in Sources */,
+				86486F87283CDE41009DDF75 /* ZDMPExtensions.swift in Sources */,
+				8652D3E1283F878700E45F4C /* ZDMPFlowLayout.swift in Sources */,
+				86E4FACE28169B870027AC6F /* ZDMediaPickerExtension.swift in Sources */,
+				86E4FACD28169B870027AC6F /* ZDMediaPicker.swift in Sources */,
+				86E4FAD628169B870027AC6F /* ZDCameraPicker.swift in Sources */,
+				86486F80283CDE1B009DDF75 /* ZDAlbumListCell.swift in Sources */,
+				86486F8F283CDE59009DDF75 /* ZDMPPhotosViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86E4FAA128169AB90027AC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86E4FAAB28169AB90027AC6F /* ZDMediaPickerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86E4FAA828169AB90027AC6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86E4FA9A28169AB80027AC6F /* ZDMediaPickerSDK */;
+			targetProxy = 86E4FAA728169AB90027AC6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		86E4FAAD28169AB90027AC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		86E4FAAE28169AB90027AC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		86E4FAB028169AB90027AC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LakshmiChidambaranathan.ZDMediaPicker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86E4FAB128169AB90027AC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LakshmiChidambaranathan.ZDMediaPicker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		86E4FAB328169AB90027AC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U6JVXG9NR7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LakshmiChidambaranathan.ZDMediaPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86E4FAB428169AB90027AC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U6JVXG9NR7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LakshmiChidambaranathan.ZDMediaPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		86E4FA9528169AB80027AC6F /* Build configuration list for PBXProject "ZDMediaPickerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E4FAAD28169AB90027AC6F /* Debug */,
+				86E4FAAE28169AB90027AC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86E4FAAF28169AB90027AC6F /* Build configuration list for PBXNativeTarget "ZDMediaPickerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E4FAB028169AB90027AC6F /* Debug */,
+				86E4FAB128169AB90027AC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86E4FAB228169AB90027AC6F /* Build configuration list for PBXNativeTarget "ZDMediaPickerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E4FAB328169AB90027AC6F /* Debug */,
+				86E4FAB428169AB90027AC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 86E4FA9228169AB80027AC6F /* Project object */;
+}
