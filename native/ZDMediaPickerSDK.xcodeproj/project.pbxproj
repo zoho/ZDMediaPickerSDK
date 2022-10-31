@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		861F6AB028C885CA00BF1CFE /* ZDScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F6AAF28C885CA00BF1CFE /* ZDScannerViewController.swift */; };
 		86486F7F283CDE1B009DDF75 /* ZDPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F7C283CDE1B009DDF75 /* ZDPhotoCell.swift */; };
 		86486F80283CDE1B009DDF75 /* ZDAlbumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86486F7D283CDE1B009DDF75 /* ZDAlbumListCell.swift */; };
 		86486F81283CDE1B009DDF75 /* ZDAlbumListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86486F7E283CDE1B009DDF75 /* ZDAlbumListCell.xib */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		861F6AAF28C885CA00BF1CFE /* ZDScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZDScannerViewController.swift; path = ZDMediaPicker/ZDMediaPicker/Scanner/ZDScannerViewController.swift; sourceTree = SOURCE_ROOT; };
 		86486F7C283CDE1B009DDF75 /* ZDPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDPhotoCell.swift; sourceTree = "<group>"; };
 		86486F7D283CDE1B009DDF75 /* ZDAlbumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAlbumListCell.swift; sourceTree = "<group>"; };
 		86486F7E283CDE1B009DDF75 /* ZDAlbumListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDAlbumListCell.xib; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		86E4FAC528169B870027AC6F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				861F6AAF28C885CA00BF1CFE /* ZDScannerViewController.swift */,
 				86486F8D283CDE59009DDF75 /* ZDMPAlbumsViewController.swift */,
 				86486F8E283CDE59009DDF75 /* ZDMPPhotosVCExtension.swift */,
 				86486F8C283CDE59009DDF75 /* ZDMPPhotosViewController.swift */,
@@ -296,6 +299,7 @@
 				86E4FAD628169B870027AC6F /* ZDCameraPicker.swift in Sources */,
 				86486F80283CDE1B009DDF75 /* ZDAlbumListCell.swift in Sources */,
 				86486F8F283CDE59009DDF75 /* ZDMPPhotosViewController.swift in Sources */,
+				861F6AB028C885CA00BF1CFE /* ZDScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

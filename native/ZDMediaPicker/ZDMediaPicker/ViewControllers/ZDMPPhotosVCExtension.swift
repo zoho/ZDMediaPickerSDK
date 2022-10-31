@@ -53,7 +53,7 @@ extension ZDMPPhotosViewController  {
     fileprivate func populateData(){
         DispatchQueue.main.async {[weak self] in
             guard let self = self else {return}
-            self.imageAssets = (self.album != nil) ? ZDAssets.getAsset(from: self.album) : ZDAssets.getAsset()
+            self.fetchAssets()
             self.collectionView.reloadData()
         }
     }
@@ -61,7 +61,16 @@ extension ZDMPPhotosViewController  {
         DispatchQueue.main.async {
             self.navigationController?.popToRootViewController(animated: true)
         }
-        self.mediaPickerLocalDelegate?.mediaPicker(didFail: .photosAccessDenied)
+        self.localDelegate?.mediaPicker(didFail: .photosAccessDenied)
+    }
+    
+    fileprivate func fetchAssets() {
+        if self.album ==  nil {
+            self.imageAssets = self.scannerDelegate == nil ? ZDAssets.getAsset() : ZDAssets.getAsset(with: .image)
+        }
+        else {
+            self.imageAssets = self.scannerDelegate == nil ? ZDAssets.getAsset(from: self.album) : ZDAssets.getAsset(from: self.album, with: .image)
+        }
     }
     
 }
@@ -79,10 +88,10 @@ extension ZDMPPhotosViewController : UIImagePickerControllerDelegate , UINavigat
                 }
                 
             case .denied:
-                self.mediaPickerLocalDelegate?.mediaPicker(didFail: .cameraAccessDenied)
+                self.localDelegate?.mediaPicker(didFail: .cameraAccessDenied)
 
             case .sourceUnavailable:
-                self.mediaPickerLocalDelegate?.mediaPicker(didFail: .cameraSourceUnavailable)
+                self.localDelegate?.mediaPicker(didFail: .cameraSourceUnavailable)
 
             }
         }
@@ -118,9 +127,9 @@ extension ZDMPPhotosViewController : UIImagePickerControllerDelegate , UINavigat
     
     fileprivate func saveMedia(with error : Error?){
         if let error = error {
-            self.mediaPickerLocalDelegate?.mediaPicker(didFail: .unableToSaveMedia(error))
+            self.localDelegate?.mediaPicker(didFail: .unableToSaveMedia(error))
         } else {
-            imageAssets = (album != nil) ? ZDAssets.getAsset(from: album) : ZDAssets.getAsset()
+            fetchAssets()
             if let capturedMedia = imageAssets.firstObject {
                 selectedAssets.insert(capturedMedia, at: 0)
             }
@@ -222,10 +231,10 @@ extension ZDMPPhotosViewController : UIGestureRecognizerDelegate{
         for item in 0 ..< itemCount {
             let indexPath = (count > 0) ? IndexPath(item: start.item + item + 1, section: start.section) : IndexPath(item: start.item - item - 1, section: start.section)
             if selectionMode {
-                if (!assetIsSelected(at: indexPath) && (selectedAssets.count < selectionLimit)){
+                if (!assetIsSelected(at: indexPath) && !didExceedSelectionLimit()){
                     didTapItem(at: indexPath)
                 }
-                else if trackGesture {
+                else if trackGesture && didExceedSelectionLimit() && !assetIsSelected(at: indexPath){
                     selectionLimitExceeded()
                     trackGesture = false
                 }
@@ -263,8 +272,14 @@ extension ZDMPPhotosViewController : UIGestureRecognizerDelegate{
         }
     }
     
+    func didSelectQR(at indexpath : IndexPath) {
+        self.dismiss(animated: true) {
+            self.localDelegate?.mediaPicker(didFinishPickingMedia: [self.imageAssets[indexpath.row]], selectionComplete: true)
+        }
+    }
+    
     func selectionLimitExceeded(){
-        self.mediaPickerLocalDelegate?.mediaPicker(didFail: .selectionLimitExceeded)
+        self.localDelegate?.mediaPicker(didFail: .selectionLimitExceeded)
     }
     
     func assetIsSelected(at indexPath : IndexPath) -> Bool{

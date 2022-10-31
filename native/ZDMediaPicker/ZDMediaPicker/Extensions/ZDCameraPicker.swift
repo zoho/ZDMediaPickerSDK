@@ -9,7 +9,7 @@ import Foundation
 import PhotosUI
 import MobileCoreServices
 
-class ZDImagePickerController: UIImagePickerController {
+class ZDCameraPickerController: UIImagePickerController {
     var strongDelegate: (UIImagePickerControllerDelegate & UINavigationControllerDelegate)? {
         didSet {
             self.delegate = strongDelegate
@@ -39,7 +39,7 @@ struct ZDCameraPicker{
         }
     }
     static func getCameraPicker(delegate : (UIImagePickerControllerDelegate & UINavigationControllerDelegate)? , mediaTypes : [String]? = [kUTTypeMovie as String , kUTTypeImage as String], requireStrongReference : Bool = false) -> UIImagePickerController{
-        let picker = ZDImagePickerController()
+        let picker = ZDCameraPickerController()
         requireStrongReference ? (picker.strongDelegate = delegate): (picker.delegate = delegate)
         picker.sourceType = .camera
         if var mediaTypes = mediaTypes, let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: .camera){

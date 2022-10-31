@@ -8,8 +8,9 @@
 import Foundation
 
 struct ZDMPViewControllerId {
-    static var albums : String = "AlbumsVC"
-    static var gallery : String = "GalleryViewController"
+    static var albums : String = "ZDAlbumsViewController"
+    static var gallery : String = "ZDPhotosViewController"
+    static var scanner : String = "ZDScannerController"
 }
 
 struct ZDMPStoryboardId {

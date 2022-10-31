@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'ZDMediaPickerSDK'
-    s.version          = '0.0.5'
+    s.version          = '0.0.7'
     s.summary          = 'This media Picker allows picking Images, Videos, Live Photos and captures images and videos as well'
 
     s.description      = 'A Customized Media Picker which supports multiple selection using pan gesture and scrolls automatically on reaching top/bottom of the screen. It also supports custom previewing of image, video and live photo. Automatically resize the cells during orientation change. Supports separate album collections'

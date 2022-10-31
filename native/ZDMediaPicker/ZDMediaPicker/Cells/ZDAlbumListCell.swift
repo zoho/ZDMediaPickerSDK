@@ -19,10 +19,10 @@ class ZDAlbumListCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with collection : PHAssetCollection){
+    func configure(with collection : PHAssetCollection, isScanner : Bool){
         self.title.text = collection.localizedTitle
         self.selectionStyle = .none
-        let assets = ZDAssets.getAsset(from: collection)
+        let assets = isScanner ? ZDAssets.getAsset(from: collection, with: .image) : ZDAssets.getAsset(from: collection)
         if let asset = assets.firstObject{
             self.thumbnailImage.getImageFromAsset(asset: asset)
         }

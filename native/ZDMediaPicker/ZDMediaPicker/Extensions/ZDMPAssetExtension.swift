@@ -10,13 +10,16 @@ import PhotosUI
 
 struct ZDAssets {
 
-    static func getAsset(from collection : PHAssetCollection? = nil) -> PHFetchResult<PHAsset>{
+    static func getAsset(from collection : PHAssetCollection? = nil , with filter : PHAssetMediaType? = nil) -> PHFetchResult<PHAsset>{
         let option = PHFetchOptions()
         option.sortDescriptors = [
             NSSortDescriptor(
               key: "creationDate",
               ascending: false)
           ]
+        if let filter = filter {
+            option.predicate = NSPredicate(format: "mediaType = %d", filter.rawValue)
+        }
         if let collection = collection {
             return PHAsset.fetchAssets(in: collection, options: option)
         }
@@ -43,18 +46,21 @@ extension UIImageView {
 }
 
 extension Array where Element == PHAssetCollection{
-   mutating func getAlbumLists(){
+    mutating func getAlbumLists(isScanner : Bool){
         self.removeAll()
         
         let albums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: nil)
         
         var result = Set<PHAssetCollection>()
-        
+        let option = PHFetchOptions()
+        if isScanner {
+            option.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+        }
         [albums, smartAlbums].forEach {
             
-            $0.enumerateObjects { collection, index, stop in
-                if PHAsset.fetchAssets(in: collection, options: nil).count > 0{
+            $0.enumerateObjects { collection, _, _ in
+                if PHAsset.fetchAssets(in: collection, options: option).count > 0{
                     result.insert(collection)
                 }
             }

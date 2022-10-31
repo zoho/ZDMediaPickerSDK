@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +14,7 @@
         <!--Photos View Controller-->
         <scene sceneID="eyc-oK-mNZ">
             <objects>
-                <viewController storyboardIdentifier="GalleryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fgp-8N-hOL" customClass="ZDMPPhotosViewController" customModule="ZDMediaPickerSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ZDPhotosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fgp-8N-hOL" customClass="ZDMPPhotosViewController" customModule="ZDMediaPickerSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wab-Ci-EXd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +124,7 @@
         <!--Albums View Controller-->
         <scene sceneID="8Sp-ma-Chp">
             <objects>
-                <viewController storyboardIdentifier="AlbumsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ld5-8w-dyu" customClass="ZDMPAlbumsViewController" customModule="ZDMediaPickerSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ZDAlbumsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ld5-8w-dyu" customClass="ZDMPAlbumsViewController" customModule="ZDMediaPickerSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zfz-ML-bZa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,10 +175,115 @@
             </objects>
             <point key="canvasLocation" x="2821.5384615384614" y="87.440758293838854"/>
         </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="0jg-Ua-6CM">
+            <objects>
+                <viewController storyboardIdentifier="ZDScannerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N8H-X3-NlZ" customClass="ZDScannerViewController" customModule="ZDMediaPickerSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SWq-ha-SrO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCY-8U-UEB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m29-ur-7Kc">
+                                        <rect key="frame" x="119" y="763.5" width="176" height="34.5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Upload from Photos">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="filled" title="Upload from Photos">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="0.56826636904761907" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="scanFromPhotos:" destination="N8H-X3-NlZ" eventType="touchUpInside" id="ObZ-E5-0r5"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QRFocus" translatesAutoresizingMaskIntoConstraints="NO" id="GD1-FJ-77r">
+                                        <rect key="frame" x="106" y="310" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-wt-Pbd">
+                                        <rect key="frame" x="358" y="763" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Zee-Mc-fMf"/>
+                                            <constraint firstAttribute="width" constant="36" id="u2J-mO-ZAo"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="flashlight.off.fill" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="flashlight.off.fill" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="activateFlash:" destination="N8H-X3-NlZ" eventType="touchUpInside" id="94B-JE-KqI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-es-RbG">
+                                        <rect key="frame" x="20" y="763" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="R2l-wT-BpX"/>
+                                            <constraint firstAttribute="width" constant="36" id="ffw-DR-nvb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="N8H-X3-NlZ" eventType="touchUpInside" id="ALp-q8-3YX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="m29-ur-7Kc" firstAttribute="centerX" secondItem="lCY-8U-UEB" secondAttribute="centerX" id="KER-D1-ya0"/>
+                                    <constraint firstItem="q6m-wt-Pbd" firstAttribute="centerY" secondItem="m29-ur-7Kc" secondAttribute="centerY" id="We9-zc-VXw"/>
+                                    <constraint firstItem="AeA-es-RbG" firstAttribute="leading" secondItem="lCY-8U-UEB" secondAttribute="leading" constant="20" id="YHp-Kj-Dmf"/>
+                                    <constraint firstItem="AeA-es-RbG" firstAttribute="centerY" secondItem="q6m-wt-Pbd" secondAttribute="centerY" id="bju-Xc-GNJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="m29-ur-7Kc" secondAttribute="bottom" constant="20" id="gUs-eX-8aI"/>
+                                    <constraint firstAttribute="trailing" secondItem="q6m-wt-Pbd" secondAttribute="trailing" constant="20" id="xD6-EJ-87C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gzg-B0-ZyA"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gzg-B0-ZyA" firstAttribute="bottom" secondItem="lCY-8U-UEB" secondAttribute="bottom" id="13k-5N-hYq"/>
+                            <constraint firstItem="gzg-B0-ZyA" firstAttribute="trailing" secondItem="lCY-8U-UEB" secondAttribute="trailing" id="Sd5-dp-zeC"/>
+                            <constraint firstItem="lCY-8U-UEB" firstAttribute="leading" secondItem="gzg-B0-ZyA" secondAttribute="leading" id="cK7-wd-Glg"/>
+                            <constraint firstItem="lCY-8U-UEB" firstAttribute="top" secondItem="gzg-B0-ZyA" secondAttribute="top" id="iic-Kd-SSS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="AeA-es-RbG" id="ktI-Mp-Oer"/>
+                        <outlet property="flash" destination="q6m-wt-Pbd" id="Ne9-EI-KBE"/>
+                        <outlet property="qrFocusImage" destination="GD1-FJ-77r" id="ime-lF-gcF"/>
+                        <outlet property="scannerView" destination="lCY-8U-UEB" id="T5u-CN-IJ4"/>
+                        <outlet property="uploadFromPhotos" destination="m29-ur-7Kc" id="AB4-18-APH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZK-2D-aN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3641" y="87"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="QRFocus" width="117" height="117"/>
         <image name="checkMarkImage" width="225" height="225"/>
+        <image name="flashlight.off.fill" catalog="system" width="76" height="128"/>
         <image name="video.fill" catalog="system" width="128" height="82"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,17 +9,25 @@ import UIKit
 import PhotosUI
 import MobileCoreServices
 
+public enum ZDMediaSource {
+    case camera, photoLibrary, scanner
+}
+
 public class ZDMediaPicker : NSObject {
     
     private var assets : [PHAsset]? = nil
     private(set) var mediaPickerDelegate : ZDMediaPickerProtocol? = nil
-    private(set) var sourceType : UIImagePickerController.SourceType = .photoLibrary
+    private(set) var sourceType : ZDMediaSource = .photoLibrary
     
-    lazy var cameraPicker: ZDImagePickerController = {
-        return ZDCameraPicker.getCameraPicker(delegate: self, mediaTypes: mediaPickerDelegate?.mediaTypes, requireStrongReference: true) as! ZDImagePickerController
+    lazy var cameraPicker: ZDCameraPickerController = {
+        return ZDCameraPicker.getCameraPicker(delegate: self, mediaTypes: mediaPickerDelegate?.mediaTypes, requireStrongReference: true) as! ZDCameraPickerController
     }()
     
-    public convenience init(mediaPickerDelegate : ZDMediaPickerProtocol? , sourceType : UIImagePickerController.SourceType = .photoLibrary) {
+    lazy var scanner : ZDScannerViewController = {
+        return getScanner(with: self)
+    }()
+    
+    public convenience init(mediaPickerDelegate : ZDMediaPickerProtocol? , sourceType : ZDMediaSource = .photoLibrary) {
         self.init()
         self.mediaPickerDelegate = mediaPickerDelegate
         self.sourceType = sourceType
@@ -28,12 +36,10 @@ public class ZDMediaPicker : NSObject {
     
     public func presentPicker(){
         switch sourceType{
-        case .camera :
+        case .camera , .scanner :
             checkAccessForCamera()
-        case .photoLibrary, .savedPhotosAlbum :
-            openPhotos()
-        @unknown default:
-            break
+        case .photoLibrary :
+            openPhotos(with: self , nil)
         }
     }
    
@@ -46,7 +52,7 @@ extension ZDMediaPicker : ZDMediaPickerInternalProtocol{
         self.mediaPickerDelegate?.mediaPicker(didFailWith: error)
     }
     func getSelectionLimit() -> Int? {
-        self.mediaPickerDelegate?.selectionLimit
+         self.mediaPickerDelegate?.selectionLimit
     }
     
     func getLocallySelectedMedia() -> [PHAsset]? {
@@ -61,23 +67,26 @@ extension ZDMediaPicker : ZDMediaPickerInternalProtocol{
             self.assets = media
         }
     }
-//    func shouldDisablePanGestureForMultiSelection() -> Bool {
-//        self.mediaPickerDelegate?.shouldDisablePanForMultiSelection ?? false
-//    }
+    func openPhotoLibrary(with delegate : ZDMediaPickerInternalProtocol?, _ scannerDelegate: ZDScanFromPhotosProtocol?) {
+        openPhotos(with: delegate , scannerDelegate)
+    }
+    func mediaPicker(didFinishScanning info: [AVMetadataObject]) {
+        mediaPickerDelegate?.mediaPicker(didFinishScanning: info)
+    }
     
 }
 
 
 // External Delegate Functions
 
-public protocol ZDMediaPickerProtocol : (UIImagePickerControllerDelegate & UINavigationControllerDelegate){
+public protocol ZDMediaPickerProtocol : (UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
     var selectionLimit: Int { get }
     var mediaTypes : [String] { get }
     var preSelectedAssets : [PHAsset]? { get }
-//    var shouldDisablePanForMultiSelection : Bool {get}
     func mediaPicker(didFinishPicking media : [PHAsset]?)
     func mediaPicker(didFinishCapturing info: [UIImagePickerController.InfoKey : Any])
     func mediaPicker(didFailWith error : ZDMediaPickerError)
+    func mediaPicker(didFinishScanning info: [AVMetadataObject])
 }
 public extension ZDMediaPickerProtocol{
 
@@ -99,6 +108,9 @@ public extension ZDMediaPickerProtocol{
     func mediaPicker(didFailWith error : ZDMediaPickerError){
         
     }
+    func mediaPicker(didFinishScanning info: [AVMetadataObject]){
+        
+    }
     
 }
 
@@ -108,23 +120,6 @@ public enum ZDMediaPickerError : Error {
     case photosAccessDenied
     case cameraSourceUnavailable
     case unableToSaveMedia(Error)
-}
-extension ZDMediaPickerError : LocalizedError {
-    
-    public var errorDescription: String? {
-        switch self {
-            
-        case .selectionLimitExceeded:
-            return "Exceeded the given selection limit "
-        case .cameraAccessDenied:
-            return "Unable to access the Camera. To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app. "
-        case .photosAccessDenied:
-            return "Unable to access Photos. To enable access, go to Settings > Privacy > Photos and turn on Photos access for this app. "
-        case .cameraSourceUnavailable:
-            return "Unable to access the Camera. Seems like the device is not supported to access camera."
-        default :
-            return self.localizedDescription
-        
-        }
-    }
+    case unableToScan
+    case unableToFlash
 }

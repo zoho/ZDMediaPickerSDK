@@ -13,27 +13,33 @@ protocol ZDMediaPickerInternalProtocol {
     func mediaPicker(didFail error : ZDMediaPickerError) -> Void
     func getLocallySelectedMedia() -> [PHAsset]?
     func getSelectionLimit() -> Int?
-//    func shouldDisablePanGestureForMultiSelection() -> Bool
+    func openPhotoLibrary(with delegate : ZDMediaPickerInternalProtocol? , _ scannerDelegate : ZDScanFromPhotosProtocol?)
+    func mediaPicker(didFinishScanning info: [AVMetadataObject])
 }
 
 
 class ZDMPAlbumsViewController: UIViewController {
     
-    var mediaPickerLocalDelegate : ZDMediaPickerInternalProtocol? = nil
+    var localDelegate : ZDMediaPickerInternalProtocol? = nil
+    var scannerDelegate : ZDScanFromPhotosProtocol? = nil
     private var albums: [PHAssetCollection] = []
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        albums.getAlbumLists()
+        albums.getAlbumLists(isScanner: self.scannerDelegate != nil)
         tableView.register(UINib(nibName: ZDMPCellId.album , bundle: Bundle(for: ZDAlbumListCell.self)), forCellReuseIdentifier: ZDMPCellId.album)
-        let cancel = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelTap))
+        self.view.accessibilityIdentifier = ZDMPViewControllerId.albums
+        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTap))
         self.navigationItem.setLeftBarButton(cancel, animated: false)
     }
     @objc private func cancelTap(){
         self.dismiss(animated: true)
     }
     
+    deinit{
+        self.scannerDelegate?.didPopFromPhotos()
+    }
 }
 
 extension ZDMPAlbumsViewController : UITableViewDelegate , UITableViewDataSource{
@@ -44,7 +50,7 @@ extension ZDMPAlbumsViewController : UITableViewDelegate , UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ZDMPCellId.album , for: indexPath) as! ZDAlbumListCell
-        cell.configure(with: albums[indexPath.row])
+        cell.configure(with: albums[indexPath.row], isScanner: self.scannerDelegate != nil)
         return cell
     }
     
@@ -56,7 +62,8 @@ extension ZDMPAlbumsViewController : UITableViewDelegate , UITableViewDataSource
         let vc = ZDMPUtility.instantiateViewController(withIdentifier: ZDMPViewControllerId.gallery) as! ZDMPPhotosViewController
         vc.title = album.localizedTitle
         vc.album = album
-        vc.mediaPickerLocalDelegate = self.mediaPickerLocalDelegate
+        vc.localDelegate = self.localDelegate
+        vc.scannerDelegate = self.scannerDelegate
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

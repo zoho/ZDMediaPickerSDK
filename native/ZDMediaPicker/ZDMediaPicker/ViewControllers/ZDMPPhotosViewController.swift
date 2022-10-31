@@ -11,7 +11,8 @@ import MobileCoreServices
 
 class ZDMPPhotosViewController: UIViewController {
     
-	var mediaPickerLocalDelegate : ZDMediaPickerInternalProtocol? = nil
+	var localDelegate : ZDMediaPickerInternalProtocol? = nil
+    var scannerDelegate : ZDScanFromPhotosProtocol? = nil
     
     var album : PHAssetCollection? = nil
     var imageAssets = PHFetchResult<PHAsset>()
@@ -23,7 +24,7 @@ class ZDMPPhotosViewController: UIViewController {
     var prevIndex : IndexPath? = nil
 	var prevDirection : UIPanGestureRecognizer.Direction = .none
     var selectionMode : Bool = false
-    var trackGesture : Bool = true
+    var trackGesture : Bool = true // To avoid unlimited callbacks to selectionLimitExceeded error
     
     
 	lazy var pangesture: UIPanGestureRecognizer = {
@@ -41,24 +42,31 @@ class ZDMPPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.collectionViewLayout = ZDMPFlowLayout()
-        self.selectedAssets = mediaPickerLocalDelegate?.getLocallySelectedMedia() ?? []
-        self.selectionLimit = mediaPickerLocalDelegate?.getSelectionLimit() ?? Int.max
+        self.view.accessibilityIdentifier = ZDMPViewControllerId.gallery
+        self.selectedAssets = localDelegate?.getLocallySelectedMedia() ?? []
+        self.selectionLimit = localDelegate?.getSelectionLimit() ?? Int.max
         accessCheckForPhotoLibrary()
         settingBarButtonItems() //Setting items(camera,done button) on navigation bar
-//        if !(mediaPickerLocalDelegate?.shouldDisablePanGestureForMultiSelection() ?? false) {
-            collectionView.addGestureRecognizer(pangesture)
-//        }
+        collectionView.addGestureRecognizer(pangesture)
+    }
+    override func viewDidLayoutSubviews() {
+        if #available(iOS 16.0, *){ //iOS 16 view frame width issue fix
+            self.view.observeIfOrientationChanged {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     func settingBarButtonItems(){
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(selectionDone))
         let camera =  UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCamera))
-        self.navigationItem.rightBarButtonItems = [done , camera]
+        self.navigationItem.rightBarButtonItems = (self.scannerDelegate == nil) ? [done , camera] : []
     }
 	
     @objc func selectionDone(){
-		self.mediaPickerLocalDelegate?.mediaPicker(didFinishPickingMedia: selectedAssets, selectionComplete: true)
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.localDelegate?.mediaPicker(didFinishPickingMedia: self.selectedAssets, selectionComplete: true)
+        }
     }
 	
     @objc func openCamera(){
@@ -68,7 +76,8 @@ class ZDMPPhotosViewController: UIViewController {
         selectedAssets.count < selectionLimit ? false : true
     }
     deinit{
-		self.mediaPickerLocalDelegate?.mediaPicker(didFinishPickingMedia: selectedAssets, selectionComplete: false)
+		self.localDelegate?.mediaPicker(didFinishPickingMedia: selectedAssets, selectionComplete: false)
+        self.scannerDelegate?.didPopFromPhotos()
     }
 
 }
@@ -86,7 +95,7 @@ extension ZDMPPhotosViewController : UICollectionViewDelegate , UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       didTapItem(at: indexPath)
+        (self.scannerDelegate == nil) ? didTapItem(at: indexPath) : didSelectQR(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -104,3 +113,23 @@ extension ZDMPPhotosViewController : UICollectionViewDelegate , UICollectionView
 }
 
 
+extension UIView {
+    private struct Orientation {
+        static var value = UIDevice.current.orientation
+    }
+
+    var currentOrientation: UIDeviceOrientation {
+        get {
+            return Orientation.value
+        } set (newvalue) {
+            Orientation.value = newvalue
+        }
+    }
+    
+    func observeIfOrientationChanged(_ completion: (() -> ())?) {
+        if self.currentOrientation != UIDevice.current.orientation {
+            completion?()
+            self.currentOrientation = UIDevice.current.orientation
+        }
+    }
+}
