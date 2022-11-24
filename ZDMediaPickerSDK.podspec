@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'ZDMediaPickerSDK'
-    s.version          = '0.0.7'
+    s.version          = '0.0.8'
     s.summary          = 'This media Picker allows picking Images, Videos, Live Photos and captures images and videos as well'
 
     s.description      = 'A Customized Media Picker which supports multiple selection using pan gesture and scrolls automatically on reaching top/bottom of the screen. It also supports custom previewing of image, video and live photo. Automatically resize the cells during orientation change. Supports separate album collections'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://www.zoho.com'
     s.license          = { :type => 'MIT'}
     s.author           = { 'DeskMobile' => 'support@zohodesk.com' }
-    s.source           = { :git => 'https://github.com/zoho/ZDMediaPickerSDK.git'}
+    s.source           = { :git => 'https://github.com/zoho/ZDMediaPickerSDK.git', :tag => '0.0.8'}
     s.platform         = :ios, '10.0'
 
     s.source_files = 'native/ZDMediaPicker/ZDMediaPicker/**/*.{swift,h,m}'

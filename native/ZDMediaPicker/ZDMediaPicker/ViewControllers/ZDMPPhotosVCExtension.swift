@@ -59,17 +59,17 @@ extension ZDMPPhotosViewController  {
     }
     fileprivate func accessDenied(){
         DispatchQueue.main.async {
-            self.navigationController?.popToRootViewController(animated: true)
+            self.dismiss(animated: true)
         }
         self.localDelegate?.mediaPicker(didFail: .photosAccessDenied)
     }
     
-    fileprivate func fetchAssets() {
-        if self.album ==  nil {
-            self.imageAssets = self.scannerDelegate == nil ? ZDAssets.getAsset() : ZDAssets.getAsset(with: .image)
+    fileprivate func fetchAssets(includeAll : Bool = false) {
+        if self.album ==  nil || includeAll{
+            self.imageAssets = !isFromScanner ? ZDAssets.getAsset() : ZDAssets.getAsset(with: .image)
         }
         else {
-            self.imageAssets = self.scannerDelegate == nil ? ZDAssets.getAsset(from: self.album) : ZDAssets.getAsset(from: self.album, with: .image)
+            self.imageAssets = !isFromScanner ? ZDAssets.getAsset(from: self.album) : ZDAssets.getAsset(from: self.album, with: .image)
         }
     }
     
@@ -102,7 +102,6 @@ extension ZDMPPhotosViewController : UIImagePickerControllerDelegate , UINavigat
         picker.dismiss(animated: true)
         
         if let image = info[.originalImage] as? UIImage{
-            self.collectionView.setContentOffset(.zero, animated: true)
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
         
@@ -128,13 +127,14 @@ extension ZDMPPhotosViewController : UIImagePickerControllerDelegate , UINavigat
     fileprivate func saveMedia(with error : Error?){
         if let error = error {
             self.localDelegate?.mediaPicker(didFail: .unableToSaveMedia(error))
-        } else {
-            fetchAssets()
+        } else  {
+            fetchAssets(includeAll: true)
             if let capturedMedia = imageAssets.firstObject {
                 selectedAssets.insert(capturedMedia, at: 0)
-            }
-            DispatchQueue.main.async {
-                self.collectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
+                if album == nil{
+                    self.collectionView.setContentOffset(.zero, animated: true)
+                    self.collectionView.insertItems(at: [IndexPath(item: 0, section: 0)])       
+                }
             }
         }
     }
@@ -296,7 +296,7 @@ extension ZDMPPhotosViewController {
         return UIContextMenuConfiguration(identifier: nil) {
             self.makePreview(with: asset)
         } actionProvider: { [weak self] actions in
-            guard let self = self else {return nil}
+            guard let self = self, !self.isFromScanner else {return nil}
             let selectAction = UIAction(title: ZDMPPreviewMenuActions.select) { action in
                 self.didTapItem(at: indexPath)
             }
@@ -325,4 +325,10 @@ extension ZDMPPhotosViewController {
         return previewController
     }
     
+}
+
+extension ZDMPPhotosViewController {
+    var isFromScanner : Bool {
+        return self.scannerDelegate != nil
+    }
 }

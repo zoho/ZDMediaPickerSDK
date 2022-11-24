@@ -16,7 +16,11 @@ class ZDMPPhotosViewController: UIViewController {
     
     var album : PHAssetCollection? = nil
     var imageAssets = PHFetchResult<PHAsset>()
-    var selectedAssets = [PHAsset]()
+    var selectedAssets = [PHAsset](){
+        didSet {
+            oldValue.isEmpty || selectedAssets.isEmpty ? settingBarButtonItems() : nil
+        }
+    }
     var selectionLimit : Int = Int.max
     
     
@@ -47,7 +51,7 @@ class ZDMPPhotosViewController: UIViewController {
         self.selectionLimit = localDelegate?.getSelectionLimit() ?? Int.max
         accessCheckForPhotoLibrary()
         settingBarButtonItems() //Setting items(camera,done button) on navigation bar
-        collectionView.addGestureRecognizer(pangesture)
+        !isFromScanner ? collectionView.addGestureRecognizer(pangesture) : nil
     }
     override func viewDidLayoutSubviews() {
         if #available(iOS 16.0, *){ //iOS 16 view frame width issue fix
@@ -60,7 +64,9 @@ class ZDMPPhotosViewController: UIViewController {
     func settingBarButtonItems(){
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(selectionDone))
         let camera =  UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCamera))
-        self.navigationItem.rightBarButtonItems = (self.scannerDelegate == nil) ? [done , camera] : []
+        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(selectionDone))
+        let barButtonItems = selectedAssets.isEmpty ? [cancel , camera] : [done , camera]
+        self.navigationItem.rightBarButtonItems = !isFromScanner ? barButtonItems : []
     }
 	
     @objc func selectionDone(){
@@ -95,7 +101,7 @@ extension ZDMPPhotosViewController : UICollectionViewDelegate , UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        (self.scannerDelegate == nil) ? didTapItem(at: indexPath) : didSelectQR(at: indexPath)
+        !isFromScanner ? didTapItem(at: indexPath) : didSelectQR(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

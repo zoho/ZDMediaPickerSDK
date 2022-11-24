@@ -58,3 +58,10 @@ extension UIView {
         }
     }
 }
+
+extension UINavigationController {
+    func enableRTL(){
+        self.view.semanticContentAttribute =  .forceRightToLeft //: .forceLeftToRight
+        self.navigationBar.semanticContentAttribute =  .forceRightToLeft //: .forceLeftToRight
+    }
+}

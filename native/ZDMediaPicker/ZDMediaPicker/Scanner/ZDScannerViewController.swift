@@ -26,7 +26,7 @@ class ZDScannerViewController: UIViewController {
     @IBOutlet weak var uploadFromPhotos: UIButton!
         
     private var qrCodeImage: UIImage?
-    private var qrCaptured : Bool = true
+    private var didCaptureQR : Bool = false
     
     lazy var qrCodeImageView: UIImageView = {
         let imageView = UIImageView()
@@ -83,17 +83,22 @@ class ZDScannerViewController: UIViewController {
     
     @IBAction func scanFromPhotos(_ sender: UIButton) {
         stopSession()
-        self.localDelegate?.openPhotoLibrary(with: localDelegate , self)
+        if !didCaptureQR{
+            self.localDelegate?.openPhotoLibrary(with: localDelegate , self)
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
         
-    @objc func dismissScanner(with info : [AVMetadataObject]?) {
+    @objc func dismissScanner( with info : [AVMetadataObject]?) {
+        /// Note : self.localDelegate becomes nil on dismissing while using MediaPicker alone(without platform)
+        var delegate = self.localDelegate
         self.dismiss(animated: true) {
             if let info = info {
-                self.localDelegate?.mediaPicker(didFinishScanning: info)
+                delegate?.mediaPicker(didFinishScanning: info)
+                delegate = nil
             }
             self.localDelegate = nil
         }
@@ -202,8 +207,8 @@ extension ZDScannerViewController : ZDScanFromPhotosProtocol {
 extension ZDScannerViewController : AVCaptureMetadataOutputObjectsDelegate {
     
     public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        guard let  metaObject = metadataObjects.first, let readableObject = previewLayer.transformedMetadataObject(for: metaObject) as? AVMetadataMachineReadableCodeObject, qrCaptured else { return }
-        qrCaptured = false
+        guard let  metaObject = metadataObjects.first, let readableObject = previewLayer.transformedMetadataObject(for: metaObject) as? AVMetadataMachineReadableCodeObject, !didCaptureQR else { return }
+        didCaptureQR = true
         DispatchQueue.main.async {
             self.moveImageViews(info: metadataObjects, corners: readableObject.corners)
         }

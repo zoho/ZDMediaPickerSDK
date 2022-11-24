@@ -1,0 +1,8 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+target 'DemoApp_ZDMediaPicker' do
+  use_frameworks!
+
+  # Pods for DemoApp_ZDMediaPicker
+  pod 'ZDMediaPicker'
+end
