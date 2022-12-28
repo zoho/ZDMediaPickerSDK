@@ -1,8 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+#source 'https://git.csez.zohocorpin.com/ZohoDeskMobile/deskmobilepodspec.git'
 target 'DemoApp_ZDMediaPicker' do
+  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for DemoApp_ZDMediaPicker
-  pod 'ZDMediaPicker'
+  pod 'ZDMediaPicker', :git => 'https://git.csez.zohocorpin.com/ZohoDeskMobile/zdmediapicker.git', :branch => 'Lakshmi'
+
 end

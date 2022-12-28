@@ -65,3 +65,28 @@ extension UINavigationController {
         self.navigationBar.semanticContentAttribute =  .forceRightToLeft //: .forceLeftToRight
     }
 }
+
+extension UIView {
+    static var shouldForceRTL : Bool = false
+}
+
+extension UIView {
+    private struct Orientation {
+        static var value = UIDevice.current.orientation
+    }
+
+    var currentOrientation: UIDeviceOrientation {
+        get {
+            return Orientation.value
+        } set (newvalue) {
+            Orientation.value = newvalue
+        }
+    }
+    
+    func observeIfOrientationChanged(_ completion: (() -> ())?) {
+        if self.currentOrientation != UIDevice.current.orientation {
+            completion?()
+            self.currentOrientation = UIDevice.current.orientation
+        }
+    }
+}

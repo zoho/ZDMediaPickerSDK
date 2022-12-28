@@ -117,25 +117,3 @@ extension ZDMPPhotosViewController : UICollectionViewDelegate , UICollectionView
     
 	
 }
-
-
-extension UIView {
-    private struct Orientation {
-        static var value = UIDevice.current.orientation
-    }
-
-    var currentOrientation: UIDeviceOrientation {
-        get {
-            return Orientation.value
-        } set (newvalue) {
-            Orientation.value = newvalue
-        }
-    }
-    
-    func observeIfOrientationChanged(_ completion: (() -> ())?) {
-        if self.currentOrientation != UIDevice.current.orientation {
-            completion?()
-            self.currentOrientation = UIDevice.current.orientation
-        }
-    }
-}

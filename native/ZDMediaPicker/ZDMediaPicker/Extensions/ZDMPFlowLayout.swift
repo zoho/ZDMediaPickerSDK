@@ -8,6 +8,14 @@
 import UIKit
 
 class ZDMPFlowLayout: UICollectionViewFlowLayout {
+
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool{
+        true
+    }
+    
+    override var developmentLayoutDirection: UIUserInterfaceLayoutDirection{
+        UIView.shouldForceRTL ? .rightToLeft : .leftToRight
+    }
     
     override init() {
         super.init()

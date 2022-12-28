@@ -67,6 +67,7 @@ extension ZDMediaPicker {
         if let topController = ZDMPUtility.topViewController(){
             let vcs  = getZDMediaPickerVCs(with: delegate, scannerDelegate)
             let nav = UINavigationController(rootViewController: vcs.0)
+            UIView.shouldForceRTL ? nav.enableRTL() : nil
             nav.pushViewController(vcs.1, animated: false)
             topController.present(nav, animated: true)
         }

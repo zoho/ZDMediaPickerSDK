@@ -9,7 +9,7 @@ import UIKit
 import Photos
 class ZDPhotoCell: UICollectionViewCell {
     
-    @IBOutlet weak var ImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkMark: UIImageView!
     @IBOutlet weak var videoIcon: UIImageView?
     @IBOutlet weak var durationLabel: UILabel?
@@ -19,14 +19,14 @@ class ZDPhotoCell: UICollectionViewCell {
         
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.ImageView.frame = self.bounds
+    override func prepareForReuse() {
+        self.imageView.image = nil
     }
     
     func configure(with asset : PHAsset , hideCheckMark : Bool){
         DispatchQueue.main.async {
-            self.ImageView.getImageFromAsset(asset: asset)
+            self.imageView.frame = self.bounds
+            self.imageView.getImageFromAsset(asset: asset)
             self.checkMark.isHidden = hideCheckMark
             self.videoIcon?.isHidden = (asset.mediaType != .video)
             self.durationLabel?.isHidden = (asset.mediaType != .video) || !hideCheckMark

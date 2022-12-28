@@ -229,7 +229,8 @@ extension ZDMPPhotosViewController : UIGestureRecognizerDelegate{
         guard let start = prevIndex else {return}
         let itemCount = (count > 0) ? count : abs(count)
         for item in 0 ..< itemCount {
-            let indexPath = (count > 0) ? IndexPath(item: start.item + item + 1, section: start.section) : IndexPath(item: start.item - item - 1, section: start.section)
+            let item = (count > 0) ? start.item + item + 1 : start.item - item - 1
+            let indexPath =  IndexPath(item: item, section: start.section)
             if selectionMode {
                 if (!assetIsSelected(at: indexPath) && !didExceedSelectionLimit()){
                     didTapItem(at: indexPath)
@@ -250,11 +251,7 @@ extension ZDMPPhotosViewController : UIGestureRecognizerDelegate{
         if assetIsSelected(at: indexPath){
             if let index = selectedAssets.firstIndex(of: imageAssets[indexPath.row]){
                 selectedAssets.remove(at: index)
-                DispatchQueue.main.async {
-                    cell.ImageView.alpha = (cell.ImageView.alpha == 1) ? 0.9 : 1
-                    cell.checkMark.isHidden = !cell.checkMark.isHidden
-                    cell.durationLabel?.isHidden = !cell.checkMark.isHidden
-                }
+                updateUIChanges(on: cell)
             }
         }
         else {
@@ -263,12 +260,16 @@ extension ZDMPPhotosViewController : UIGestureRecognizerDelegate{
             }
             else {
                 selectedAssets.append(imageAssets[indexPath.row])
-                DispatchQueue.main.async {
-                    cell.ImageView.alpha = (cell.ImageView.alpha == 1) ? 0.9 : 1
-                    cell.checkMark.isHidden = !cell.checkMark.isHidden
-                    cell.durationLabel?.isHidden = !cell.checkMark.isHidden
-                }
+                updateUIChanges(on: cell)
             }
+        }
+    }
+    
+    func updateUIChanges(on cell : ZDPhotoCell) {
+        DispatchQueue.main.async {
+            cell.imageView.alpha = (cell.imageView.alpha == 1) ? 0.9 : 1
+            cell.checkMark.isHidden = !cell.checkMark.isHidden
+            cell.durationLabel?.isHidden = !cell.checkMark.isHidden
         }
     }
     

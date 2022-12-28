@@ -23,9 +23,8 @@ class ZDAlbumListCell: UITableViewCell {
         self.title.text = collection.localizedTitle
         self.selectionStyle = .none
         let assets = isScanner ? ZDAssets.getAsset(from: collection, with: .image) : ZDAssets.getAsset(from: collection)
-        if let asset = assets.firstObject{
-            self.thumbnailImage.getImageFromAsset(asset: asset)
-        }
+        guard let asset = assets.firstObject else {return}
+        self.thumbnailImage.getImageFromAsset(asset: asset)
         self.count.text = String(assets.count)
     }
 }

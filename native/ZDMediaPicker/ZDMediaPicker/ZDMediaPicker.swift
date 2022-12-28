@@ -27,11 +27,12 @@ public class ZDMediaPicker : NSObject {
         return getScanner(with: self)
     }()
     
-    public convenience init(mediaPickerDelegate : ZDMediaPickerProtocol? , sourceType : ZDMediaSource = .photoLibrary) {
+    public convenience init(mediaPickerDelegate : ZDMediaPickerProtocol? , sourceType : ZDMediaSource = .photoLibrary, shouldForceRTL : Bool = false) {
         self.init()
         self.mediaPickerDelegate = mediaPickerDelegate
         self.sourceType = sourceType
         self.assets = mediaPickerDelegate?.preSelectedAssets
+        UIView.shouldForceRTL = shouldForceRTL
     }
     
     public func presentPicker(){
